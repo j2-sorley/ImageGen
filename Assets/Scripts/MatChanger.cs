@@ -41,6 +41,7 @@ public class MatChanger : MonoBehaviour
     public Button PrevRoomButton;
     public Button NextEngineButton; 
     public Button PrevEngineButton;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +57,8 @@ public class MatChanger : MonoBehaviour
         NextRoomButton.onClick.AddListener(NextRoom);
         PrevRoomButton.onClick.AddListener(PreviousRoom); 
         NextEngineButton.onClick.AddListener(NextEngine);
-        PrevEngineButton.onClick.AddListener(PreviousEngine); 
+        PrevEngineButton.onClick.AddListener(PreviousEngine);
+        
     }
 
     // Update is called once per frame
@@ -68,16 +70,24 @@ public class MatChanger : MonoBehaviour
 
     void NextRoom() 
     {
-        if (i < 5)
+        if (i < 3)
             { i++; }
-        if (i == 5 )
+        if (i == 3 )
         {
             i = 0;
         }
 
         MatSelect();
     }
-    void PreviousRoom() {i--; MatSelect(); }
+    void PreviousRoom() {
+        if (i < -1)
+        { i--; }
+        if (i == -1)
+        {
+            i = 2;
+        }
+
+        MatSelect(); }
     void NextEngine() {
         if (Engine < 5) 
         { 
@@ -138,4 +148,5 @@ public class MatChanger : MonoBehaviour
         RoomUI.text = RoomTitle[i];
 
     }
+   
 }
